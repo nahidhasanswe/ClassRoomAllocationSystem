@@ -1,0 +1,28 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="container">
+          <div class="card card-login mx-auto mt-5">
+            <div class="card-header">
+              Login
+            </div>
+            <div class="card-body">
+              <form [formGroup]="formdata" (ngSubmit)="loginSystem(formdata.value,formdata.valid)">
+                <md-input-container style="width:100%">
+                  <input mdInput placeholder="Employee Id" formControlName="username">
+                  <md-error *ngIf="formdata.controls['username'].errors?.required">
+                    <strong>Username</strong> is required
+                  </md-error>
+                </md-input-container>
+                <br/>
+                <md-input-container style="width:100%">
+                      <input mdInput type="password" placeholder="Password" formControlName="password" >
+                      <md-error *ngIf="formdata.controls['password'].errors?.required">
+                        <strong>Password</strong> is required
+                      </md-error>
+                </md-input-container> 
+                <br/>
+                <br/>
+                <button md-raised-button color="primary" class="btn btn-block" type="submit">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>

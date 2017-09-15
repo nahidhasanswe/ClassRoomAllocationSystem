@@ -1,0 +1,13 @@
+
+<div *ngFor="let day of ModifyRoutine">
+  <h4>{{day.DayName}}</h4>
+  <div *ngFor="let eachTimeSlot of day.Classes">
+    <strong>{{eachTimeSlot.TimeSlot}}</strong>
+    <ul>
+      <li *ngFor="let Group of eachTimeSlot.ClassGroup">{{Group.RoomNo}} {{Group.CourseCode}}</li>
+    </ul>
+    <br/>
+  </div>
+  <br/>
+  <br/>
+</div>
