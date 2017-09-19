@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class HttpService extends Http {
@@ -11,13 +12,13 @@ export class HttpService extends Http {
   private route:Router;
 
   constructor (backend: XHRBackend, options: RequestOptions) {
-    let token = localStorage.getItem('auth_token'); // your custom token getter function here
+    let token = localStorage.getItem('accessToken'); // your custom token getter function here
     options.headers.set('Authorization', `Bearer ${token}`);
     super(backend, options);
   }
 
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-    let token = localStorage.getItem('auth_token');
+    let token = localStorage.getItem('accessToken');
     if (typeof url === 'string') { // meaning we have to add the token to the options, not in url
       if (!options) {
         // let's make option object
@@ -33,8 +34,8 @@ export class HttpService extends Http {
 
   private catchAuthError (self: HttpService) {
     // we have to pass HttpService's own instance here as `self`
+    console.log();
     return (res: Response) => {
-      console.log(res);
       if (res.status === 401) {
          this.route.navigate(['/login'])
       }else if(res.status==403){
@@ -43,4 +44,5 @@ export class HttpService extends Http {
       return Observable.throw(res);
     };
   }
+
 }

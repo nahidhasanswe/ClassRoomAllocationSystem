@@ -1,0 +1,9 @@
+<h1 md-dialog-title>{{model.title}}</h1>
+<md-dialog-content>
+  <span>{{model.text}}</span>
+</md-dialog-content>
+<md-dialog-actions>
+  <span fxFlex></span>
+  <button md-raised-button (click)="close()">{{model.close}}</button>
+  <button md-raised-button (click)="confirm()">{{model.confirm}}</button>
+</md-dialog-actions>

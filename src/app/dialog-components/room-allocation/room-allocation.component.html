@@ -1,0 +1,52 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div>
+    <form [formGroup]="formdata" (ngSubmit)="saveRoomAllocation(formdata.value,formdata.valid)" novalidate>
+        <div md-dialog-title>Room Allocation request</div>
+        <hr>
+        <md-dialog-content>
+          <div layout="row">
+              <md-input-container style="width:100%">
+                  <input mdInput placeholder="Room No." formControlName="RoomNo">
+                  <md-error *ngIf="formdata.controls['RoomNo'].errors?.required">
+                    <strong>Room No</strong> is required
+                  </md-error>
+              </md-input-container>
+              <br/>
+              <md-input-container style="width:100%">
+                      <input mdInput placeholder="Date of Allocation" formControlName="Date">
+                      <md-error *ngIf="formdata.controls['Date'].errors?.required">
+                        <strong>Date</strong> is required
+                      </md-error>
+              </md-input-container>
+              <md-input-container style="width:100%">
+                    <input mdInput placeholder="Time Slot of class" formControlName="TimeSlot">
+                    <md-error *ngIf="formdata.controls['TimeSlot'].errors?.required">
+                      <strong>Time Slot</strong> is required
+                    </md-error>
+              </md-input-container>
+              <br/>
+              <md-input-container style="width:100%">
+                      <input mdInput placeholder="Reason for extra class" formControlName="Reason" >
+                      <md-error *ngIf="formdata.controls['Reason'].errors?.required">
+                        <strong>Reason</strong> is required
+                      </md-error>
+              </md-input-container>
+              <md-input-container style="width:100%">
+                    <input mdInput placeholder="Course Code" formControlName="CourseCode">
+                    <md-error *ngIf="formdata.controls['CourseCode'].errors?.required">
+                      <strong>Course Code</strong> is required
+                    </md-error>
+              </md-input-container>
+              <br/>
+              <br/>
+            </div>
+            </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span fxFlex></span>
+            <button md-raised-button class="md-warn" type="button" (click)="closeDialog()">Cancel</button>
+            <div style="margin-left: 5px" fxLayoutAlign="end center">
+                  <button md-raised-button type="submit">Request for Room</button>
+            </div>
+        </md-dialog-actions>
+    </form>
+  </div>

@@ -7,7 +7,7 @@ export class RoutineModify {
     public DistinctTimeSlot:DistinctTimeSlot[];
     public singleDayRoutine:ModifyRoutine;
 
-    CreateRoutine(Data:Routine[]){
+    CreateRoutine(Data:Array<any>){
       var ModifyRoutine=[];
       Data.forEach(value=>{
           var singleDayRoutine={DayName:'',Id:'',Classes:[]};
@@ -29,6 +29,24 @@ export class RoutineModify {
       });
 
         return ModifyRoutine;
+    }
+
+    CreateEmptyClassRoutineByDate(Data:any){
+      var singleDayRoutine={DayName:'',Id:'',Classes:[]};
+      singleDayRoutine.DayName=Data.DayName;
+      singleDayRoutine.Id=Data.Id;
+      var DistinctTimeSlot=[];
+      DistinctTimeSlot=this.GetDistinctTimeSlot(Data.Classes);
+      
+      DistinctTimeSlot.forEach(val=>{
+        var GroupByTime={TimeSlot:'',ClassGroup:null};
+        GroupByTime.TimeSlot=val.TimeSlot;
+        GroupByTime.ClassGroup=this.GetGroupedClass(Data.Classes,val.TimeSlot);
+        singleDayRoutine.Classes.push(GroupByTime);
+        
+      })
+
+      return singleDayRoutine;
     }
 
     GetGroupedClass(data:TimeSlotClass[],timeSlot:string){

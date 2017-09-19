@@ -1,13 +1,89 @@
-
-<div *ngFor="let day of ModifyRoutine">
-  <h4>{{day.DayName}}</h4>
-  <div *ngFor="let eachTimeSlot of day.Classes">
-    <strong>{{eachTimeSlot.TimeSlot}}</strong>
-    <ul>
-      <li *ngFor="let Group of eachTimeSlot.ClassGroup">{{Group.RoomNo}} {{Group.CourseCode}}</li>
-    </ul>
-    <br/>
-  </div>
-  <br/>
-  <br/>
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="row">
+  <div class="DepartmentTitle text-center col-lg-12">Department of Software Engineering</div>
+  <div class="routineTile text-center col-lg-12">Class Routine</div>
 </div>
+<div layout="row">
+    <div fxLayoutAlign="center center">
+        <button md-mini-fab [mdMenuTriggerFor]="menu">
+            <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+        <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="ViewMyRoutine()">
+              <md-icon>event_note</md-icon>
+              <span>My Routine</span>
+            </button>
+            <button md-menu-item (click)="ViewRoomAllocationList()">
+              <md-icon>check</md-icon>
+              <span>Room Allocation List</span>
+            </button>
+            <button md-menu-item (click)="ViewRoomCancellationList()">
+              <md-icon>close</md-icon>
+              <span>Room Canceled List</span>
+            </button>
+          </md-menu>
+    </div>
+    <span fxFlex></span>
+    <md-form-field class="example-full-width">
+      <input mdInput [(ngModel)]="allocationDate" [mdDatepicker]="picker" placeholder="Search with Date">
+      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle> 
+      <md-datepicker #picker></md-datepicker>
+    </md-form-field>
+    
+    <div style="margin-left: 5px" fxLayoutAlign="end center">
+        <button md-mini-fab (click)="viewAvailableRoom()" color="primary">
+            <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
+        
+    </div>
+</div>
+<div class="containerX">
+    <div class="row" style="margin-bottom: 30px" *ngFor="let day of ModifyRoutine">
+        <div class="col-lg-12 text-center dayName">{{day.DayName}}</div>
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-2" *ngFor="let eachTimeSlot of day.Classes">
+              <div class="text-center timeSlot">{{eachTimeSlot.TimeSlot}}</div>
+              <div class="row">
+                  <div class="col-lg-12" *ngFor="let classGroup of eachTimeSlot.ClassGroup">
+                      <div *ngIf="!classGroup.isNoClass">
+                          <md-card class="example-card">
+                              <md-card-content>
+                                <div style="height: 80px;" fxLayout="row" fxLayoutAlign="center center">
+                                    <span class="md-headline">{{classGroup.RoomNo}}</span>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                  <span class="courseCode">{{classGroup.CourseCode}}</span>
+                                  <span class="teacherInitial">{{classGroup.TeachersInitial}}</span>
+                                </div>
+                              </md-card-content>
+                              <md-card-actions fxLayout="column">
+                                  <button md-raised-button disabled color="warn">APPLY</button>
+                              </md-card-actions>
+                            </md-card>
+                      </div>
+                      <div *ngIf="classGroup.isNoClass">
+                          <md-card class="example-card">
+                              <md-card-content>
+                                <div style="height: 80px;" fxLayout="row" fxLayoutAlign="center center">
+                                    <span class="md-headline">{{classGroup.RoomNo}}</span>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                  <span class="noClass">NO Class!</span>
+                                  <md-icon svgIcon="correct-svg"></md-icon>
+                                </div>
+                              </md-card-content>
+                              <md-card-actions fxLayout="column">
+                                <button md-raised-button class="md-accent" color="warn" (click)="applyRoom(day.DayName,eachTimeSlot.TimeSlot,classGroup.RoomNo)">APPLY</button>
+                              </md-card-actions>
+                            </md-card>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
