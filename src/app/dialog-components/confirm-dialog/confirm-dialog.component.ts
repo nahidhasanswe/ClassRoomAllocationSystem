@@ -30,6 +30,6 @@ export class ConfirmDialogComponent implements OnInit {
 interface model{
   title:string;
   text:string;
-  close:string;
   cancel:string;
+  confirm:string;
 }

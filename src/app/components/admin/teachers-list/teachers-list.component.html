@@ -1,0 +1,45 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="row">
+  <div class="DepartmentTitle text-center col-lg-12">Department of Software Engineering</div>
+  <div class="routineTile text-center col-lg-12">Teacher List</div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-3">
+      <button md-raised-button color="accent" (click)="AddTeacher()"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Teacher</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <table class="table table-responsive table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Teacher Initial</th>
+        <th>Teacher Name</th>
+        <th>Role Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teacherList; let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{teacher.Initial}}</td>
+        <td>{{teacher.Name}}</td>
+        <td>{{teacher.Role}}</td>
+        <td>
+          <div fxLayout="row" fxAlign="center center">
+            <button md-icon-button mdTooltip="Update" color="primary">
+              <md-icon class="md-24">edit</md-icon>
+            </button>
+            <button md-icon-button mdTooltip="Remove" color="warn">
+              <md-icon class="md-24">close</md-icon>
+            </button>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div>
+  <form name="CompanyForm" ng-submit="" novalidate>
+      <div md-dialog-title>Date for Room Cancellation</div>
+      <hr>
+      <md-dialog-content style="min-width:400px">
+        <div layout="row">
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="cancellationDate" name="Allocation" [mdDatepicker]="picker" placeholder="Pick valid date">
+                    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle> 
+                    <md-datepicker #picker></md-datepicker>
+                </md-form-field>
+            </div>
+      </md-dialog-content>
+      <md-dialog-actions layout="row">
+          <span fxFlex></span>
+          <button md-raised-button class="md-warn" (click)="cancel()">Cancel</button>
+          <div style="margin-left: 5px" fxLayoutAlign="end center">
+                <button md-raised-button (click)="checkAvailability()">Request for Room</button>
+          </div>
+      </md-dialog-actions>
+  </form>
+</div>
+

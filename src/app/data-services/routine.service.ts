@@ -32,6 +32,7 @@ export class RoutineService {
     }
 
     getEmptyClassRoom(data){
+      console.log(data);
       return this.myHttp.post(this.serverPath + '/api/Routine/Activity/GetEmptyClassroom',data).
       map(result=>result.json());
     }

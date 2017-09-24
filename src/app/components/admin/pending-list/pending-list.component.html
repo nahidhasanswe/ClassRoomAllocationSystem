@@ -1,0 +1,48 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="row">
+  <div class="DepartmentTitle text-center col-lg-12">Department of Software Engineering</div>
+  <div class="routineTile text-center col-lg-12">Room Allocation Pending List</div>
+</div>
+<br>
+<br>
+<div class="row">
+  <table class="table table-responsive table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Teacher Name</th>
+        <th>Room No</th>
+        <th>Course Code</th>
+        <th>Time Slot</th>
+        <th>Submitted Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pending of pendingList; let i=index" class="cusrsorHand">
+        <th (click)="ViewAllocationDetails(pending)" scope="row">{{i+1}}</th>
+        <td (click)="ViewAllocationDetails(pending)">{{pending.FullName}}</td>
+        <td (click)="ViewAllocationDetails(pending)">{{pending.RoomNo}}</td>
+        <td (click)="ViewAllocationDetails(pending)">{{pending.CourseCode}}</td>
+        <td (click)="ViewAllocationDetails(pending)">{{pending.TimeSlot}}</td>
+        <td (click)="ViewAllocationDetails(pending)">{{pending.Submited_Date|date :'dd-MM-yyyy, h:mm:ss a'}}</td>
+        <td (click)="ViewAllocationDetails(pending)"><span class="badge badge-mini badge-danger">Pending</span></td>
+        <td>
+          <div fxLayout="row" fxAlign="center center">
+            <button md-icon-button mdTooltip="Details" (click)="ViewAllocationDetails(pending)" color="warn">
+              <md-icon class="md-24">list</md-icon>
+            </button>
+            <button md-icon-button mdTooltip="Approve" color="primary" (click)="confirmAccept(pending)">
+              <md-icon class="md-24">check</md-icon>
+            </button>
+            <button md-icon-button mdTooltip="Reject" color="accent" (click)="confirmReject(pending.Id)">
+              <md-icon class="md-24">close</md-icon>
+            </button>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

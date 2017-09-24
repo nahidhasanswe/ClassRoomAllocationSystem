@@ -34,6 +34,7 @@
     "moment": "^2.18.1",
     "ng2-opd-popup": "^1.1.21",
     "ng2-toasty": "^4.0.3",
+    "ngx-pagination": "^3.0.1",
     "rxjs": "^5.4.2",
     "xlsx": "^0.11.3",
     "zone.js": "^0.8.14"

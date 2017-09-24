@@ -1,0 +1,95 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="row">
+  <div class="DepartmentTitle text-center col-lg-12">Department of Software Engineering</div>
+  <div class="routineTile text-center col-lg-12">Room Allocation List</div>
+</div>
+<div layout="row">
+    <div fxLayoutAlign="start center">
+        <button md-mini-fab [mdMenuTriggerFor]="menu">
+            <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+        <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="ViewMyRoutine()">
+              <md-icon>event_note</md-icon>
+              <span>My Routine</span>
+            </button>
+            <button md-menu-item (click)="ViewRoomAllocationList()">
+              <md-icon>check</md-icon>
+              <span>Room Allocation List</span>
+            </button>
+            <button md-menu-item (click)="ViewRoomCancellationList()">
+              <md-icon>close</md-icon>
+              <span>Room Canceled List</span>
+            </button>
+            <button md-menu-item (click)="ViewRoutine()">
+              <md-icon>list</md-icon>
+              <span>Routine</span>
+            </button>
+          </md-menu>
+    </div>
+</div>
+<br>
+<div class="containerX">
+  <div class="row">
+    <div class="col-lg-2" *ngFor="let class of AllocationList">
+        <md-card *ngIf="class.isAccept" class="example-card" mdTooltip="{{class.Reason}}">
+            <md-card-header>
+                <span fxFlex></span>
+                <button md-icon-button [mdMenuTriggerFor]="menu">
+                    <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu #menu="mdMenu">
+                  <button md-menu-item disabled>
+                    <md-icon>edit</md-icon>
+                    <span>Update</span>
+                  </button>    
+                  <button md-menu-item (click)="DeleteRoomAllocation(class.Id)">
+                    <md-icon>delete</md-icon>
+                    <span>Rmove</span>
+                  </button>
+                </md-menu> 
+            </md-card-header>
+            <md-card-content>
+              <div style="height: 50px;" fxLayout="row" fxLayoutAlign="center center">
+                  <span class="md-headline">{{class.RoomNo}}</span>
+              </div>
+              <div fxLayout="column" fxLayoutAlign="center center">
+                <span class="courseCode">{{class.CourseCode}}</span>
+                <span class="teacherInitial">{{class.TeachersInitial}}</span>
+                <span class="timeSlot">{{class.TimeSlot}}</span>
+                <span class="date">{{class.Date|date}}</span>
+              </div>
+            </md-card-content>
+          </md-card>
+          <md-card *ngIf="!class.isAccept" class="pending-card" mdTooltip="{{class.Reason}}">
+              <md-card-header>
+                  <span fxFlex></span>
+                  <button md-icon-button [mdMenuTriggerFor]="menu">
+                      <md-icon>more_vert</md-icon>
+                  </button>
+                  <md-menu #menu="mdMenu">
+                    <button md-menu-item disabled>
+                      <md-icon>edit</md-icon>
+                      <span>Update</span>
+                    </button>    
+                    <button md-menu-item (click)="DeleteRoomAllocation(class.Id)">
+                      <md-icon>delete</md-icon>
+                      <span>Rmove</span>
+                    </button>
+                  </md-menu> 
+              </md-card-header>
+              <md-card-content>
+                  <div style="height: 50px;" fxLayout="row" fxLayoutAlign="center center">
+                      <span class="md-headline">{{class.RoomNo}}</span>
+                  </div>
+                  <div fxLayout="column" fxLayoutAlign="center center">
+                    <span class="courseCode">{{class.CourseCode}}</span>
+                    <span class="teacherInitial">{{class.TeachersInitial}}</span>
+                    <span class="timeSlot">{{class.TimeSlot}}</span>
+                    <span class="date">{{class.Date|date}}</span>
+                  </div>
+              </md-card-content>
+            </md-card>
+    </div>
+  </div>
+</div>

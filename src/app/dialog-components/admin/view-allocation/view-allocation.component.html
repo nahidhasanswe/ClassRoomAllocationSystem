@@ -1,0 +1,49 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div md-dialog-title>
+  Room Allocation Details
+  <span fxFlex></span>
+  <button md-icon-button mdTooltip="Close" (click)="close()">
+      <md-icon class="md-24">close</md-icon>
+  </button>
+</div>
+<hr>
+<md-dialog-content>
+  <div class="row">
+    <div class="col-lg-5"><strong>Teacher Initial</strong></div>
+    <div class="col-lg-7">{{allocationDetails.TeachersInitital}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Teacher Name</strong></div>
+    <div class="col-lg-6">{{allocationDetails.FullName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Room No</strong></div>
+    <div class="col-lg-6">{{allocationDetails.RoomNo}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Course Code</strong></div>
+    <div class="col-lg-6">{{allocationDetails.CourseCode}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Time Slot</strong></div>
+    <div class="col-lg-6">{{allocationDetails.TimeSlot}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Reason</strong></div>
+    <div class="col-lg-6">{{allocationDetails.Reason}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Class Date</strong></div>
+    <div class="col-lg-6">{{allocationDetails.Date | date}}</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5"><strong>Request Submitted</strong></div>
+    <div class="col-lg-6">{{allocationDetails.Submited_Date | date :'dd-MM-yyyy, h:mm:ss a'}}</div>
+  </div>
+</md-dialog-content>
+<hr>
+<md-dialog-actions>
+  <span fxFlex></span>
+  <button md-raised-button color="warn" (click)="confirmReject(allocationDetails.Id)" ><i class="fa fa-ban" aria-hidden="true"></i> Reject</button>
+  <button md-raised-button color="primary" (click)="confirmAccept(allocationDetails)" ><i class="fa fa-check-square-o" aria-hidden="true"></i> Accept</button>
+</md-dialog-actions>

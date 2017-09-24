@@ -1,0 +1,16 @@
+.DepartmentTitle{
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.routineTile{
+    color: rgba(241, 3, 154, 0.92);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cusrsorHand :hover{
+    cursor: pointer !important;
+}
+

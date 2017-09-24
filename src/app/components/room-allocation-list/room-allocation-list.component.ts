@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ClassRoomManagermentService} from '../../data-services/class-room-managerment.service';
-import {MdDialogRef, MdDialog} from '@angular/material';
+import { MdDialog} from '@angular/material';
 import { DatePipe } from '@angular/common';
-import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
+import {ConfirmDialogComponent} from '../../dialog-components/confirm-dialog/confirm-dialog.component';
 import {ToastyService, ToastyConfig} from 'ng2-toasty';
 
 
@@ -16,13 +17,14 @@ export class RoomAllocationListComponent implements OnInit {
 
   public AllocationList:any;
 
-  constructor(private _service:ClassRoomManagermentService,private dialogRef:MdDialogRef<RoomAllocationListComponent>,private _dialog:MdDialog,
-    private toastyService:ToastyService,private toastyConfig:ToastyConfig) { 
+  constructor(private _service:ClassRoomManagermentService, private _dialog:MdDialog,
+    private toastyService:ToastyService,private toastyConfig:ToastyConfig , private route: Router) { 
       toastyConfig.theme='material';
       _service.getRoomAllocationList().subscribe(result=>{
       this.AllocationList=result;
     })
   }
+
 
   ngOnInit() {
   }
@@ -34,7 +36,7 @@ export class RoomAllocationListComponent implements OnInit {
         title:'Confirm',
         text:'Are you sure to remove Room Allocation?',
         confirm:'Yes',
-        close:'No'
+        cancel:'No'
       },
       disableClose:true
     })
@@ -65,8 +67,20 @@ export class RoomAllocationListComponent implements OnInit {
     })
   }
 
-  closeDialog(){
-    this.dialogRef.close();
+  ViewRoutine() {
+    this.route.navigate(['/route']);
+  }
+
+  ViewRoomCancellationList(){
+    this.route.navigate(['/RoomCancellationList']);
+  }
+
+  ViewRoomAllocationList(){
+    this.route.navigate(['/RoomAllocationList']);
+  }
+
+  ViewMyRoutine(){
+    this.route.navigate(['/MyRoutine']);
   }
 
 }

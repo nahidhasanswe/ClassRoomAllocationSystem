@@ -28,8 +28,8 @@ export class ClassRoomManagermentService {
       map(result=>result.json());
     }
 
-    removeRoomCancellation(id){
-      return this.myHttp.get(this.serverPath + '/api/RoomCancellation/Remove/'+id).
+    removeRoomCancellation(data){
+      return this.myHttp.post(this.serverPath + '/api/RoomCancellation/Remove',data).
       map(result=>result.json());
     }
 

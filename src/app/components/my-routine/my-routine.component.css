@@ -1,0 +1,66 @@
+.example-card {
+    border: 1px solid rgba(101, 128, 30, 0.47);
+    padding: 0px !important;
+  }
+
+.example-card:hover{
+    z-index:1000;
+    box-shadow:rgba(0, 0, 0, 0.3) 0 12px 12px 0;
+    -webkit-box-shadow:rgba(0, 0, 0, 0.3) 0 12px 12px 0;
+    -moz-box-shadow:rgba(0, 0, 0, 0.3) 0 12px 12px 0;
+}
+
+.md-headline{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.courseCode{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(104, 159, 56, 0.93);
+}
+
+.teacherInitial{
+    font-size: 18px;
+    color: rgba(240, 14, 153, 0.93);
+}
+
+.noClass{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(243, 13, 13);
+}
+
+.noTitle{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.dayName{
+    color: rgba(78, 56, 48, 0.86);
+    background-color: rgba(13, 213, 240, 0.57);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.timeSlot{
+    color:rgba(7, 81, 146, 0.91);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.DepartmentTitle{
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.routineTile{
+    color: rgba(241, 3, 154, 0.92);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.mat-dialog-container {padding: 0px !important;}
