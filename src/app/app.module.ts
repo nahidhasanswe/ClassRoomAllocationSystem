@@ -12,7 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 //Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule,MdInputModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule } from '@angular/material';
-import {MdDialogModule,MdDatepickerModule, MdNativeDateModule, MdTooltipModule, MdChipsModule} from '@angular/material';
+import {MdDialogModule,MdDatepickerModule, MdNativeDateModule, MdTooltipModule, MdChipsModule, MdSelectModule} from '@angular/material';
 
 
 //Angular 2 ui notification
@@ -117,6 +117,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
     MdTooltipModule,
     MdDatepickerModule,
     MdNativeDateModule,
+    MdSelectModule,
     CommonModule,
     FlexLayoutModule,
     NgxPaginationModule,

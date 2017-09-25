@@ -1,3 +1,49 @@
-<p>
-  add-teacher works!
-</p>
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div>
+    <form [formGroup]="formdata" (ngSubmit)="saveRoomCancellation(formdata.value,formdata.valid)" novalidate>
+        <div md-dialog-title>Room Allocation request</div>
+        <hr>
+        <md-dialog-content>
+          <div layout="row">
+              <md-input-container style="width:100%">
+                  <input mdInput placeholder="Teacher Initial" formControlName="TeachersInitial">
+                  <md-error *ngIf="formdata.controls['TeachersInitial'].errors?.required">
+                    <strong>Teacher Initial</strong> is required
+                  </md-error>
+              </md-input-container>
+              <br/>
+              <md-input-container style="width:100%">
+                      <input mdInput placeholder="Teacher Name" formControlName="TeacherFullName">
+                      <md-error *ngIf="formdata.controls['TeacherFullName'].errors?.required">
+                        <strong>Teacher Name</strong> is required
+                      </md-error>
+              </md-input-container>
+              <md-input-container style="width:100%">
+                    <input mdInput placeholder="Email" formControlName="Email">
+                    <md-error *ngIf="formdata.controls['Email'].errors?.required">
+                        <strong>Email</strong> is required
+                    </md-error>
+                    <md-error *ngIf="formdata.controls['Email'].errors?.pattern">
+                        <strong>Email</strong> is not valid
+                    </md-error>
+                    
+              </md-input-container>
+              <md-select mdInput placeholder="Select Role" formControlName="Role">
+                  <md-option [value]="Admin">Admin</md-option>
+                  <md-option [value]="Teacher">Teacher</md-option>
+              </md-select>
+              <md-error *ngIf="formdata.controls['Role'].errors?.required">
+                  <strong>Role</strong> is required
+              </md-error>
+              <br/>
+            </div>
+            </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span fxFlex></span>
+            <button md-raised-button class="md-warn" type="button" (click)="closeDialog()">Cancel</button>
+            <div style="margin-left: 5px" fxLayoutAlign="end center">
+                  <button md-raised-button [disabled]="!formdata.valid" type="submit">Cancel the Room</button>
+            </div>
+        </md-dialog-actions>
+    </form>
+  </div>
